@@ -1,0 +1,38 @@
+spring:
+  datasource:
+#   数据源基本配置
+    username: root
+    password: admin
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.10.144:3306/spring_boot_study?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    type: com.alibaba.druid.pool.DruidDataSource
+    #<-------------------sql脚本导入到mysql数据库中 start-------------------->
+    #    把sql脚本导入到mysql数据库中
+#    schema:
+#      - classpath:sql/department.sql
+#      - classpath:sql/employee.sql
+    #   spring boot 2.X需要配置
+    initialization-mode: always
+    #<-------------------sql脚本导入到mysql数据库中 end-------------------->
+  jpa:
+    hibernate:
+#    更新或者创建数据表结构
+      ddl-auto: update
+#   控制台显示SQL
+    show-sql: true
+mybatis:
+  # 指定全局配置文件位置
+#  config-location: classpath:mybatis/mybatis-config.xml
+  # 指定sql映射文件位置
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+xu:
+  hello:
+    prefix: 欢迎！
+    suffix: 光临！！！
+
+#启动日志框架
+logging:
+  level:
+    com.xu.springbootmybatis.mapper: debug
